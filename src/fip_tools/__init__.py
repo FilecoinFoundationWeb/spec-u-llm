@@ -1,1 +1,2 @@
-from .fip_list import get_fip_numbers
+from .fip_list import get_all_fips
+from .fip import Fip
