@@ -1,0 +1,6 @@
+[submodule "specs"]
+	path = specs
+	url = https://github.com/filecoin-project/specs
+[submodule "FIPs"]
+	path = FIPs
+	url = https://github.com/filecoin-project/FIPs
