@@ -21,3 +21,10 @@ def test_get_all_fips():
     # Check pathnames are set and valid
     assert all(f.pathname is not None for f in fips)
     assert all(f.pathname.endswith(f"fip-{f.number:04d}.md") for f in fips)
+    
+    # Check metadata parsing
+    for fip in fips:
+        metadata = fip.get_metadata()
+        assert isinstance(metadata, dict)
+        assert "fip" in metadata
+        assert int(metadata["fip"]) == fip.number
