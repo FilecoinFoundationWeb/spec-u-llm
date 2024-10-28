@@ -20,3 +20,6 @@ addopts = "-v"
 
 [tool.uv]
 package = true
+
+[project.scripts]
+specullm = "fip_tools.cli:main"
