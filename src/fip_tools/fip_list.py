@@ -2,6 +2,21 @@ import os
 import re
 from .fip import Fip
 
+def get_fips_by_status(status: str) -> list[Fip]:
+    """
+    Returns a sorted list of FIP objects that have the specified status in their metadata.
+    
+    Args:
+        status (str): The status to filter by (e.g. 'Draft', 'Final', 'Active')
+        
+    Returns:
+        list[Fip]: Sorted list of FIP objects with matching status
+    """
+    all_fips = get_all_fips()
+    return sorted([fip for fip in all_fips 
+                  if fip.get_metadata().get('status', '').lower() == status.lower()],
+                 key=lambda f: f.number)
+
 def get_all_fips():
     """
     Returns a sorted list of FIP objects by scanning the FIPs/FIPS directory

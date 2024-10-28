@@ -12,6 +12,7 @@ class Fip:
         self.number = number
         self.pathname = pathname
         self._metadata = None
+        self._content = None
     
     def get_metadata(self) -> dict:
         """Returns the YAML front matter metadata from the FIP markdown file as a dict.
@@ -50,3 +51,17 @@ class Fip:
     def __repr__(self) -> str:
         """Returns a detailed string representation for debugging"""
         return f"<Fip(number={self.number})>"
+        
+    def get_content(self) -> str:
+        """Returns the full content of the FIP markdown file.
+        
+        Returns:
+            str: The complete file contents
+            
+        Raises:
+            FileNotFoundError: If the FIP file doesn't exist
+        """
+        if self._content is None and self.pathname:
+            with open(self.pathname) as f:
+                self._content = f.read()
+        return self._content or ""
