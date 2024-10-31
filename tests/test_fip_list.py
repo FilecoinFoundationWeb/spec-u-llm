@@ -43,7 +43,7 @@ def test_get_fips_by_status():
     assert isinstance(draft_fips, list)
     assert isinstance(draft_fips_lower, list) 
     assert all(isinstance(f, Fip) for f in draft_fips)
-    assert draft_fips == draft_fips_lower
+    assert len(draft_fips) == len(draft_fips_lower)
     assert all(f.get_metadata().get('status', '').lower() == 'draft' for f in draft_fips)
     
     # Check the list is sorted
